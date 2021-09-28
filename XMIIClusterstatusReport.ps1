@@ -30,14 +30,14 @@ $Style = "
 
 $Servers = get-content D:\shrinath\XMIIserversPrimary.txt
 
-$messageSubject = "xMII Cluster Resource Status Report"
+$messageSubject = "Cluster Resource Status Report"
 
-$smtpto = “<shrinath.acharya@in.ibm.com>,<cce_wintel_support@wwpdl.vnet.ibm.com>"
+$smtpto = “< to address >"
 
 
-$smtpfrom = “xmiiclusterreport@cokecce.com”
+$smtpfrom = “ 'from address ”
 
-$SmtpServer = “mail.na.cokecce.com”
+$SmtpServer = “smtpserver.com”
 
 $message = New-Object System.Net.Mail.MailMessage $smtpfrom, $smtpto
 $message.Subject = $messageSubject
@@ -63,7 +63,7 @@ $mydata = Invoke-Command -Session $sessions { $output} | select cluster,Name,own
 
 #Email Function .
 
-$message.Body = $mydata  | ConvertTo-Html -Head $style -PreContent '<h1><b><I> XMII Cluster Resource Group Status report</I></b></h1>' 
+$message.Body = $mydata  | ConvertTo-Html -Head $style -PreContent '<h1><b><I> Cluster Resource Group Status report</I></b></h1>' 
 
 $smtp = New-Object Net.Mail.SmtpClient($smtpServer)
 
